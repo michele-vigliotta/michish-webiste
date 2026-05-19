@@ -29,7 +29,7 @@
     --card-shadow:   rgba(30,45,74,0.10);   /* ombra hover sulle card */
 
     /* --- Tipografia --- */
-    --font-display: 'Cinzel', serif;           /* nome/titoli, stile biglietto fronte */
+    --font-display: 'Times New Roman', serif;           /* nome/titoli, stile biglietto fronte */
     --font-script:  'Great Vibes', cursive;    /* "Psicologa" in corsivo elegante */
     --font-body:    'Cormorant Garamond', serif; /* testo corrente, leggibile ed elegante */
 
@@ -106,7 +106,7 @@ ul {
 /* Nome nella navbar — font display, piccolo, lettering largo */
 .navbar-brand {
     font-family: var(--font-display);
-    font-size: 0.88rem;
+    font-size: 1.25rem;
     letter-spacing: 0.1em;
     color: var(--text-light);
     white-space: nowrap; /* non va mai a capo */
@@ -122,7 +122,7 @@ ul {
 /* Singolo link di navigazione */
 .navbar-links a {
     font-family: var(--font-display);
-    font-size: 0.72rem;
+    font-size: 1.1rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--beige);
@@ -186,12 +186,10 @@ ul {
    Il navy del hero rimane visibile ai lati, incorniciando la foto.
    margin: 0 auto → centrato; margin-bottom → spazio prima della sezione beige. */
 .hero-photo-wrapper {
-    width: calc(100% - 30px);  /* 24px di respiro per lato */
-    max-width: 900px;           /* oltre questa larghezza l'immagine si sgrana */
-    height: clamp(220px, 38vw, 440px);
+    width: 100%;
+    height: clamp(700px, 38vw, 440px);
     overflow: hidden;
-    margin: 0 auto 52px;
-    border-radius: 10px 10px 0 0; /* solo angoli superiori arrotondati */
+    margin-bottom: 52px;
 }
 
 /* La foto riempie il contenitore mantenendo le proporzioni (object-fit: cover) */
@@ -199,7 +197,7 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%; /* mostra la parte centrale-alta (le poltrone) */
+    object-position: center 60%; /* mostra la parte centrale-alta (le poltrone) */
     opacity: 0.7; /* leggera trasparenza per ammorbidire l'immagine */
 }
 
@@ -463,8 +461,8 @@ a.contact-value:hover {
 
 /* "Riceve su appuntamento" — font script come il titolo hero */
 .footer-note {
-    font-family: var(--font-script);
-    font-size: 2rem;
+    font-family: "Edwardian Script ITC", cursive;
+    font-size: 2.75rem;
     color: var(--beige);
     text-align: center;
     margin-bottom: 28px;
@@ -508,9 +506,8 @@ a.contact-value:hover {
         gap: 18px;
     }
 
-    /* Foto più larga su mobile: margini laterali ridotti da 24px a 10px per lato */
     .hero-photo-wrapper {
-        width: calc(100% - 20px);
+        width: 100%;
     }
 
     /* Sezioni: padding verticale ridotto su mobile */
