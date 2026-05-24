@@ -122,7 +122,7 @@ ul {
 /* Singolo link di navigazione */
 .navbar-links a {
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--beige);
@@ -565,7 +565,7 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     margin-bottom: 48px;
 }
 
@@ -573,7 +573,7 @@ ul {
 .contact-item {
     display: flex;
     align-items: baseline;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -608,6 +608,10 @@ a.contact-value {
 a.contact-value:hover {
     color: var(--beige);
     text-decoration-color: var(--beige);
+}
+
+#contatti .section-divider {
+    margin-bottom: 20px;
 }
 
 /* "Riceve su appuntamento" — font script come il titolo hero */
