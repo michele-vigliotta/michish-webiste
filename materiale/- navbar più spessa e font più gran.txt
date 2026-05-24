@@ -6,8 +6,8 @@
 - sopra frase: Dott.ssa Michela Lorenzini Psicologa (corsivo meno bold) ✅
 - togliere div bianco tra foto e div chi sono ✅
 - section chi sono:
-  collapse menu con icon (mezzo rombo dorato della section di cosa mi occupo)
-- servizi punta a di cosa mi occupo
+  collapse menu con icon (mezzo rombo dorato della section di cosa mi occupo) ✅
+- servizi punta a di cosa mi occupo ✅
 - di cosa mi occupo:
 	- primo div consulenza psicologica
 
