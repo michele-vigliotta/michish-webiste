@@ -1,0 +1,15 @@
+
+- navbar più spessa e font più grande ✅
+- foto larghezza ok, più alta, più opacità, 
+  testo: angolo in basso a dx con paddinng bottom ✅
+  Sentirsi reali è più che esistere; è trovare un modo per    esistere come se stessi e avere un sé in cui ritirarsi per rilassarsi. D. W. Winnicott.
+- sopra frase: Dott.ssa Michela Lorenzini Psicologa (corsivo meno bold)
+- togliere div bianco tra foto e div chi sono
+- section chi sono:
+  collapse menu con icon (mezzo rombo dorato della section di cosa mi occupo)
+- servizi punta a di cosa mi occupo
+- di cosa mi occupo:
+	- primo div consulenza psicologica
+
+- Riceve su appuntamento online e in presenza. position: subito dopo contatti(title)	
+
