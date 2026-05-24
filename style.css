@@ -95,7 +95,7 @@ ul {
     z-index: 100; /* sopra qualsiasi altro elemento durante lo scroll */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-wrap: wrap;   /* su schermi stretti i link vanno a capo */
     gap: 8px;
     padding: 18px 36px;
@@ -207,6 +207,14 @@ ul {
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
     margin: 0;
     padding: 0;
+}
+
+.hero-quote-name {
+    font-style: italic;
+    font-size: 1em;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
 }
 
 .hero-quote cite {
