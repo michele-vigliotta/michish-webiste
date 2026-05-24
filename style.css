@@ -188,7 +188,7 @@ ul {
 .hero-photo-wrapper {
     position: relative;
     width: 100%;
-    height: clamp(700px, 38vw, 440px);
+    height: 650px;
     overflow: hidden;
 }
 
@@ -241,6 +241,14 @@ ul {
 /* =============================================================================
    5. LAYOUT COMUNE — sezioni e container
    ============================================================================= */
+
+/* Offset scroll per compensare la navbar sticky su tutte le ancore */
+#home,
+#chi-sono,
+#servizi,
+#contatti {
+    scroll-margin-top: 68px;
+}
 
 /* Classe base per tutte le sezioni di contenuto */
 .section {
@@ -305,10 +313,99 @@ ul {
     margin: 0 auto 56px;
 }
 
-/* Blocco biografico — testo giustificato, multipli paragrafi */
+/* Riga titolo + bottone toggle: griglia 3 colonne per centrare il titolo */
+.section-title-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.section-title-row .section-title {
+    grid-column: 2;
+    margin-bottom: 0;
+}
+
+.section-title-row .bio-toggle {
+    grid-column: 3;
+    justify-self: start;
+    margin-left: 10px;
+}
+
+/* Titolo cliccabile */
+.section-title-row .section-title {
+    cursor: pointer;
+}
+
+/* Bottone chevron per aprire/chiudere la bio */
+.bio-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.bio-toggle::after {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-right: 2px solid var(--beige);
+    border-bottom: 2px solid var(--beige);
+    transform: rotate(45deg);
+    margin-top: -6px;
+    transition: transform 0.3s ease, border-color 0.22s ease, margin-top 0.3s ease;
+}
+
+.bio-toggle:hover::after {
+    border-color: var(--navy);
+}
+
+.bio-toggle[aria-expanded="true"]::after {
+    transform: rotate(-135deg);
+    margin-top: 6px;
+}
+
+/* Sezione Chi Sono: padding ridotto quando chiusa */
+#chi-sono {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    transition: padding-top 0.45s ease, padding-bottom 0.45s ease;
+}
+
+#chi-sono.bio-open {
+    padding-top: var(--section-padding-v);
+    padding-bottom: var(--section-padding-v);
+}
+
+#chi-sono .section-divider {
+    margin-bottom: 0;
+    transition: margin-bottom 0.45s ease;
+}
+
+#chi-sono.bio-open .section-divider {
+    margin-bottom: 48px;
+}
+
+/* Blocco biografico — nascosto di default, visibile con .is-open */
 .bio {
     max-width: 800px;
     margin: 0 auto;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.45s ease, opacity 0.35s ease;
+}
+
+.bio.is-open {
+    max-height: 2000px;
+    opacity: 1;
 }
 
 .bio p {
@@ -547,6 +644,14 @@ a.contact-value:hover {
 }
 
 @media (max-width: 700px) {
+
+    /* Offset scroll ridotto: navbar mobile più bassa */
+    #home,
+    #chi-sono,
+    #servizi,
+    #contatti {
+        scroll-margin-top: 62px;
+    }
 
     /* Navbar: brand e link si impilano verticalmente */
     .navbar {
