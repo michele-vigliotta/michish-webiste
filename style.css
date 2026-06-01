@@ -95,7 +95,7 @@ ul {
     z-index: 100; /* sopra qualsiasi altro elemento durante lo scroll */
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     flex-wrap: wrap;   /* su schermi stretti i link vanno a capo */
     gap: 8px;
     padding: 18px 36px;
@@ -106,6 +106,8 @@ ul {
 /* Nome nella navbar — font display, piccolo, lettering largo */
 .navbar-brand {
     font-family: var(--font-display);
+    
+    text-transform: uppercase;
     font-size: 1.25rem;
     letter-spacing: 0.1em;
     color: var(--text-light);
@@ -234,7 +236,7 @@ ul {
     height: 100%;
     object-fit: cover;
     object-position: center 74%; /* mostra la parte centrale-bassa (le poltrone) */
-    opacity: 0.5; /* leggera trasparenza per ammorbidire l'immagine */
+    opacity: 0.3; /* leggera trasparenza per ammorbidire l'immagine */
 }
 
 
@@ -560,22 +562,66 @@ ul {
    8. SEZIONE CONTATTI — footer
    ============================================================================= */
 
-/* Elenco verticale centrato dei contatti */
-.contacts {
+/* Riga principale: contatti a sinistra, mappe a destra */
+.contacts-row {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    align-items: flex-start;
+    gap: 48px;
     margin-bottom: 48px;
 }
 
-/* Singola riga contatto: etichetta + valore affiancati */
+/* Blocco contatti: colonna flex centrata come blocco, item allineati a sinistra */
+.contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    margin: 0;
+    gap: 15px;
+}
+
+/* Colonna delle due mappe */
+.maps-column {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+/* Singolo blocco mappa: label + iframe */
+.map-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.contact-icon {
+    width: 0.8em;
+    height: 0.8em;
+    vertical-align: middle;
+    margin-bottom: 0.1em;
+}
+
+.map-label {
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--beige);
+}
+
+.map-frame {
+    width: 200px;
+    height: 150px;
+    border: 3px solid var(--beige);
+    border-radius: 15px;
+    opacity: 0.9;
+}
+
+/* Singola riga: label + valore */
 .contact-item {
     display: flex;
     align-items: baseline;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 24px;
 }
 
 /* Etichetta ("Telefono", "E-mail", ecc.) */
@@ -585,8 +631,8 @@ ul {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--beige);
-    min-width: 72px;
-    text-align: right;
+    min-width: 110px;
+    text-align: left;
     flex-shrink: 0;
 }
 
@@ -616,7 +662,9 @@ a.contact-value:hover {
 
 /* "Riceve su appuntamento" — font script come il titolo hero */
 .footer-note {
-    font-family: "Edwardian Script ITC", cursive;
+    font-family: var(--font-body);
+    font-style: italic;
+    
     font-size: 2.75rem;
     color: var(--beige);
     text-align: center;
@@ -715,6 +763,21 @@ a.contact-value:hover {
     }
 
     /* Nei contatti l'etichetta va sopra il valore (layout verticale) */
+    .contacts-row {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 48px;
+    }
+
+    .contacts {
+        align-items: center;
+        width: 100%;
+    }
+
+    .map-frame {
+        width: 100%;
+    }
+
     .contact-item {
         flex-direction: column;
         align-items: center;
@@ -724,5 +787,82 @@ a.contact-value:hover {
     .contact-label {
         text-align: center;
         min-width: unset;
+        justify-content: flex-start;
     }
+}
+
+
+/* =============================================================================
+   COOKIE BANNER
+   ============================================================================= */
+
+.cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: var(--navy);
+    border-top: 1px solid rgba(200, 180, 154, 0.3);
+    padding: 18px 32px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cookie-banner.is-visible {
+    display: flex;
+}
+
+.cookie-text {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    flex: 1;
+}
+
+.cookie-text a {
+    color: var(--beige);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.cookie-actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.cookie-btn {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: 1px solid var(--beige);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cookie-btn--accept {
+    background-color: var(--beige);
+    color: var(--navy);
+}
+
+.cookie-btn--accept:hover {
+    background-color: var(--beige-light);
+    border-color: var(--beige-light);
+}
+
+.cookie-btn--decline {
+    background-color: transparent;
+    color: var(--beige);
+}
+
+.cookie-btn--decline:hover {
+    background-color: rgba(200, 180, 154, 0.1);
 }
