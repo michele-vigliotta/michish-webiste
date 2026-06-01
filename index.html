@@ -38,8 +38,22 @@
             <li><a href="#servizi">Servizi</a></li>
             <li><a href="#contatti">Contatti</a></li>
         </ul>
-        
+        <button class="hamburger" id="hamburgerBtn" aria-label="Apri menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+
     </nav>
+
+    <!-- Sidebar mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar" aria-label="Menu navigazione">
+        <ul class="sidebar-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#chi-sono">Chi Sono</a></li>
+            <li><a href="#servizi">Servizi</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+        </ul>
+    </aside>
 
     <!-- =====================================================================
          HERO
@@ -62,7 +76,7 @@
         <!-- Foto dello studio professionale (salvare in images/stanza.jpg) -->
         <div class="hero-photo-wrapper">
             <img
-                src="images/stanza_1.jpg"
+                src="images/stanza_2.jpg"
                 alt="Studio professionale della Dott.ssa Michela Lorenzini a Loreto"
                 class="hero-photo"
             >
@@ -185,7 +199,7 @@
 
                     <div class="contact-item">
                         <span class="contact-label"><svg class="contact-icon" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg> Sede</span>
-                        <span class="contact-value">Via Fratelli Brancondi, Loreto (AN)</span>
+                        <span class="contact-value">Via Fratelli Brancondi 66, Loreto (AN)</span>
                     </div>
 
                     <div class="contact-item">
@@ -204,14 +218,14 @@
                 <div class="maps-column">
 
                     <div class="map-block">
-                        <span class="map-label">Studio</span>
+                        <!-- <span class="map-label">Studio</span> -->
                         <iframe class="map-frame" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2897.0819661636515!2d13.602751375038062!3d43.43800406632432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133279d9a55449a1%3A0x42e1b45418b5f945!2sVia%20Fratelli%20Brancondi%2C%2060025%20Loreto%20AN!5e0!3m2!1sit!2sit!4v1780318313839!5m2!1sit!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
-                    <div class="map-block">
+                    <!-- <div class="map-block">
                         <span class="map-label">Parcheggio</span>
                         <iframe class="map-frame" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2897.0819661636515!2d13.602751375038062!3d43.43800406632432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133279d9a55449a1%3A0x42e1b45418b5f945!2sVia%20Fratelli%20Brancondi%2C%2060025%20Loreto%20AN!5e0!3m2!1sit!2sit!4v1780318313839!5m2!1sit!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -252,6 +266,35 @@
 
         bioToggle.addEventListener('click', toggleBio);
         chiSonoTitle.addEventListener('click', toggleBio);
+
+        // --- Sidebar mobile ---
+        const hamburgerBtn   = document.getElementById('hamburgerBtn');
+        const sidebar        = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openSidebar() {
+            sidebar.classList.add('is-open');
+            sidebarOverlay.classList.add('is-open');
+            hamburgerBtn.classList.add('is-open');
+            hamburgerBtn.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('is-open');
+            sidebarOverlay.classList.remove('is-open');
+            hamburgerBtn.classList.remove('is-open');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        hamburgerBtn.addEventListener('click', function() {
+            sidebar.classList.contains('is-open') ? closeSidebar() : openSidebar();
+        });
+
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        document.querySelectorAll('.sidebar-links a').forEach(function(link) {
+            link.addEventListener('click', closeSidebar);
+        });
 
         // --- Cookie banner ---
         const cookieBanner  = document.getElementById('cookieBanner');

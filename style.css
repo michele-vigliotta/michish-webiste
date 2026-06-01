@@ -199,11 +199,11 @@ ul {
     position: absolute;
     bottom: 28px;
     right: 32px;
-    max-width: 380px;
+    max-width: 560px;
     text-align: right;
     font-family: var(--font-body);
     font-style: italic;
-    font-size: clamp(0.92rem, 2vw, 1.1rem);
+    font-size: clamp(0.94rem, 2vw, 1.2rem);
     line-height: 1.7;
     color: rgba(237, 230, 219, 0.88);
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
@@ -213,7 +213,8 @@ ul {
 
 .hero-quote-name {
     font-style: italic;
-    font-size: 1em;
+    font-size: 1.8em;
+    white-space: nowrap;
     color: var(--text-light);
     margin-bottom: 10px;
     letter-spacing: 0.04em;
@@ -224,7 +225,7 @@ ul {
     margin-top: 6px;
     font-style: normal;
     font-family: var(--font-display);
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: rgba(200, 180, 154, 0.85);
@@ -236,7 +237,7 @@ ul {
     height: 100%;
     object-fit: cover;
     object-position: center 74%; /* mostra la parte centrale-bassa (le poltrone) */
-    opacity: 0.3; /* leggera trasparenza per ammorbidire l'immagine */
+    opacity: 0.45; /* leggera trasparenza per ammorbidire l'immagine */
 }
 
 
@@ -610,8 +611,8 @@ ul {
 }
 
 .map-frame {
-    width: 200px;
-    height: 150px;
+    width: 400px;
+    height: 209px;
     border: 3px solid var(--beige);
     border-radius: 15px;
     opacity: 0.9;
@@ -621,17 +622,17 @@ ul {
 .contact-item {
     display: flex;
     align-items: baseline;
-    gap: 24px;
+    gap: 20px;
 }
 
 /* Etichetta ("Telefono", "E-mail", ecc.) */
 .contact-label {
     font-family: var(--font-display);
-    font-size: 0.68rem;
+    font-size: 0.9rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--beige);
-    min-width: 110px;
+    min-width: 130px;
     text-align: left;
     flex-shrink: 0;
 }
@@ -665,7 +666,7 @@ a.contact-value:hover {
     font-family: var(--font-body);
     font-style: italic;
     
-    font-size: 2.75rem;
+    font-size: 2.55rem;
     color: var(--beige);
     text-align: center;
     margin-bottom: 28px;
@@ -687,6 +688,31 @@ a.contact-value:hover {
    Breakpoint a 700px: copre la maggior parte degli smartphone moderni.
    ============================================================================= */
 
+/* Hamburger nascosto su desktop */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    color: var(--beige);
+}
+
+.hamburger svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.hamburger.is-open svg {
+    transform: rotate(180deg);
+}
+
 /* Sotto 400px la foto occupa tutta la larghezza (niente margini laterali) */
 @media (max-width: 400px) {
     .hero-photo-wrapper {
@@ -705,16 +731,32 @@ a.contact-value:hover {
         scroll-margin-top: 62px;
     }
 
-    /* Navbar: brand e link si impilano verticalmente */
+    /* Navbar mobile: brand a sinistra, hamburger fisso a destra */
     .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 14px 20px;
-        gap: 10px;
+        flex-wrap: nowrap;
+        align-items: center;
+        padding: 12px 56px 12px 20px;
+        gap: 0;
+    }
+
+    .navbar-brand {
+        font-size: 0.8rem;
     }
 
     .navbar-links {
-        gap: 18px;
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .hamburger svg {
+        stroke: #c8b49a;
     }
 
     .hero-photo-wrapper {
@@ -727,6 +769,11 @@ a.contact-value:hover {
         max-width: 230px;
         bottom: 16px;
         right: 16px;
+    }
+
+    .hero-quote-name {
+        font-size: 1.2em;
+        white-space: normal;
     }
 
     .hero-quote cite {
@@ -789,6 +836,71 @@ a.contact-value:hover {
         min-width: unset;
         justify-content: flex-start;
     }
+
+    .footer-note {
+        font-size: 1.3rem;
+    }
+
+}
+
+
+/* =============================================================================
+   HAMBURGER + SIDEBAR MOBILE
+   ============================================================================= */
+
+/* Overlay scuro dietro la sidebar */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 200;
+}
+
+.sidebar-overlay.is-open {
+    display: block;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 240px;
+    height: 100%;
+    background-color: var(--navy);
+    border-left: 1px solid rgba(200, 180, 154, 0.2);
+    z-index: 201;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    transition: right 0.3s ease;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    padding-top: 10px;
+}
+
+.sidebar.is-open {
+    right: 0;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    text-align: center;
+}
+
+.sidebar-links a {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--beige);
+    transition: color 0.2s ease;
+}
+
+.sidebar-links a:hover {
+    color: #ffffff;
 }
 
 
