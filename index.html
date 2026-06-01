@@ -98,17 +98,17 @@
              presentato come timeline verticale per una lettura scorrevole.
              Sfondo beige chiaro per differenziarsi visivamente dalla sezione successiva.
              ===================================================================== -->
-        <section class="section section--beige" id="chi-sono">
+        <section class="section section--beige bio-open" id="chi-sono">
             <div class="container">
 
                 <div class="section-title-row">
                     <h2 class="section-title">Chi Sono</h2>
-                    <button class="bio-toggle" aria-expanded="false" aria-controls="bio-content" aria-label="Mostra biografia"></button>
+                    <button class="bio-toggle" aria-expanded="true" aria-controls="bio-content" aria-label="Mostra biografia"></button>
                 </div>
                 <!-- Linea decorativa sottile sotto il titolo, ispirata al separatore del biglietto -->
                 <div class="section-divider"></div>
 
-                <div class="bio" id="bio-content">
+                <div class="bio is-open" id="bio-content">
                     <p>Sono una psicologa iscritta all'Albo A degli Psicologi della regione Marche (n. 03786). Ho conseguito la laurea triennale in Scienze Psicologiche dello sviluppo, della personalità e delle relazioni interpersonali e la laurea magistrale in Psicologia Clinica, entrambe presso l'Università degli Studi di Padova. Attualmente frequento la Scuola di Specializzazione in Psicoterapia Psicoanalitica &ldquo;Istituto di Psicoterapia Psicoanalitica Marco Levi Bianchini-Sergio De Risio&rdquo;.</p>
                     <p>Nel corso della mia esperienza professionale ho maturato competenze nell'ambito della tutela minorile, del sostegno alla genitorialità e del sostegno psicologico rivolto ad adulti e adolescenti che attraversano momenti di difficoltà, sofferenza emotiva o cambiamento.</p>
                     <p>Il mio lavoro si fonda sull'orientamento psicoanalitico, che pone al centro l'ascolto della persona, della sua storia e dei vissuti che emergono nella relazione clinica. L'intervento psicologico mira non solo ad alleviare la sofferenza, ma anche a comprenderne il significato più profondo, favorendo una maggiore consapevolezza di sé e un cambiamento più stabile nel tempo.</p>
@@ -123,12 +123,16 @@
              Su desktop: griglia a 3 colonne. Su mobile: colonna singola.
              Sfondo crema neutro per alternare visivamente con il beige sopra.
              ===================================================================== -->
-        <section class="section section--cream" id="servizi">
+        <section class="section section--cream servizi-open" id="servizi">
             <div class="container">
 
-                <h2 class="section-title">Servizi</h2>
+                <div class="section-title-row">
+                    <h2 class="section-title">Servizi</h2>
+                    <button class="bio-toggle" aria-expanded="true" aria-controls="servizi-content" aria-label="Mostra servizi"></button>
+                </div>
                 <div class="section-divider"></div>
 
+                <div class="servizi-content is-open" id="servizi-content">
                 <div class="cards">
 
                     <!-- Card 1: Consulenza Psicologica -->
@@ -158,6 +162,7 @@
                         </p>
                     </div>
 
+                </div>
                 </div>
             </div>
         </section>
@@ -266,6 +271,20 @@
 
         bioToggle.addEventListener('click', toggleBio);
         chiSonoTitle.addEventListener('click', toggleBio);
+
+        const serviziToggle  = document.querySelector('#servizi .bio-toggle');
+        const serviziContent = document.getElementById('servizi-content');
+        const servizi        = document.getElementById('servizi');
+        const serviziTitle   = document.querySelector('#servizi .section-title');
+
+        function toggleServizi() {
+            const isOpen = serviziContent.classList.toggle('is-open');
+            serviziToggle.setAttribute('aria-expanded', isOpen);
+            servizi.classList.toggle('servizi-open', isOpen);
+        }
+
+        serviziToggle.addEventListener('click', toggleServizi);
+        serviziTitle.addEventListener('click', toggleServizi);
 
         // --- Sidebar mobile ---
         const hamburgerBtn   = document.getElementById('hamburgerBtn');

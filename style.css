@@ -396,6 +396,40 @@ ul {
     margin-bottom: 48px;
 }
 
+/* Contenuto servizi — nascosto di default, visibile con .is-open */
+.servizi-content {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.45s ease, opacity 0.35s ease;
+}
+
+.servizi-content.is-open {
+    max-height: 2000px;
+    opacity: 1;
+}
+
+/* Sezione Servizi: padding ridotto quando chiusa */
+#servizi {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    transition: padding-top 0.45s ease, padding-bottom 0.45s ease;
+}
+
+#servizi.servizi-open {
+    padding-top: var(--section-padding-v);
+    padding-bottom: var(--section-padding-v);
+}
+
+#servizi .section-divider {
+    margin-bottom: 0;
+    transition: margin-bottom 0.45s ease;
+}
+
+#servizi.servizi-open .section-divider {
+    margin-bottom: 48px;
+}
+
 /* Blocco biografico — nascosto di default, visibile con .is-open */
 .bio {
     max-width: 800px;
@@ -412,7 +446,7 @@ ul {
 }
 
 .bio p {
-    font-size: 1.05rem;
+    font-size: 1.3rem;
     line-height: 1.9;
     color: var(--text-dark);
     text-align: justify;
@@ -553,7 +587,7 @@ ul {
 
 /* Testo descrittivo della card */
 .card-text {
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.78;
     color: var(--text-muted);
 }
@@ -851,7 +885,6 @@ a.contact-value:hover {
         font-size: 1.3rem;
     }
 
-    .map
 }
 
 
