@@ -890,6 +890,10 @@ a.contact-value:hover {
         font-size: 1.3rem;
     }
 
+    .hero-quote-dash {
+        display: none;
+    }
+
     .cookie-banner {
         flex-direction: column;
         align-items: flex-start;
